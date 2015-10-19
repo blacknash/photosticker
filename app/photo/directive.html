@@ -1,0 +1,7 @@
+<div>
+<div class="uploadArea" ng-if="!photo.img">
+    <input type="file" class="photoUpload" fileread="photo.img" accept="image/*">
+</div>
+
+<img ng-src="{{photo.img}}" ng-click="uploadImage()" ng-if="photo.img" class="picture">
+</div>
