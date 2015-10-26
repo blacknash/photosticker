@@ -1,7 +1,7 @@
 (function () {
     angular
         .module("photoSticker")
-        .directive("photo", photoDirective);
+        .directive("photoarea", photoDirective);
 
     function photoDirective(){
         var directive = {
@@ -19,6 +19,16 @@
     function photoController(){
         var photo = this;
         photo.img = null;
+        photo.clear = clear;
+
+        function clear(){
+            photo.img = null;
+            var elements = document.getElementsByClassName("stickerpiece");
+            for( var i in elements){
+                elements[i].remove();
+            }
+        }
+
     }
 
 })();

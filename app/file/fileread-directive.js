@@ -12,7 +12,9 @@
         }
     }
 
-    function linkFileRead(scope,element,attributes){
+    linkFileRead.$inject = ["scope","element","attributes"];
+
+    function linkFileRead(scope,element, attributes){
         element.bind("change", fileChange );
 
         function fileChange(changeEvent){

@@ -1,0 +1,291 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@stickbar :#EEEEEE;
+@workbackground :#999999;
+@workarea: #FFFFFF;
+@upload: "/assets/img/photo_upload.png";
+@button : #66b9ff;
+@buttoncolor : #FFFFFF;
+@buttonhover: #8ad2ff;
+@gray: #333;
+@gray-light: #aaa;
+@gray-lighter: #eee;
+@gray-space: #dedede;
+@space: 40px;
+@blue: #428bca;
+@blue-dark: darken(@blue, 5%);
+@red : #EC606A;
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.radius{
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+
+.translate(@x; @y) {
+  -webkit-transform: translate(@x, @y);
+  -ms-transform: translate(@x, @y); // IE9+
+  transform: translate(@x, @y);
+}
+.transition(@transition) {
+  -webkit-transition: @transition;
+  transition: @transition;
+}
+.transition-transform(@transition) {
+  -webkit-transition: -webkit-transform @transition;
+  -moz-transition: -moz-transform @transition;
+  -o-transition: -o-transform @transition;
+  transition: transform @transition;
+}
+
+body{
+  font-family: "Open Sans", sans-serif;
+
+  .row{
+    &:after{
+      content:" ";
+      display: block;
+      clear: both;
+    }
+    .col{
+      float: left;
+      display: block;
+      height: 100%;
+
+      &:after{
+        content:" ";
+        display: block;
+        clear: both;
+      }
+
+
+      &:first-child{
+        width:150px;
+        background: @stickbar;
+      }
+      &:last-child{
+        width: calc(~'100% - 150px');
+        background: @workbackground;
+      }
+
+      .workarea{
+        .radius;
+        width: 90%;
+        height:90%;
+        margin-left: 5%;
+        margin-top: 2.5%;
+        overflow: hidden;
+        background: @workarea;
+
+        .stickerpiece{
+          position: absolute;
+          width: 100px;
+          height: 100px;
+        }
+
+        .startover{
+          .radius;
+          background: @button;
+          padding: 10px;
+          color: @buttoncolor;
+          position: absolute;
+          margin: 5px;
+          border:1px solid @button;
+          cursor: pointer;
+          &:hover{
+            background: @buttonhover;
+          }
+        }
+        .picture{
+          width: 40%;
+          margin-left: 30%;
+          margin-top: 5%;
+          display: block;
+        }
+        .uploadArea{
+          background: url(@upload) no-repeat;
+          height:128px;
+          width: 128px;
+          margin: 20% auto;
+
+          input{
+            width: 128px;
+            height: 128px;
+            opacity: 0;
+            filter: alpha(opacity=0);
+          }
+        }
+      }
+
+      .stickerarea{
+        padding: 10px;
+        overflow-y: auto;
+        height: 95%;
+        .sticker-collection{
+            &:hover{
+              .delete{
+                display: block;
+              }
+            }
+            padding: 0px;
+            margin: 0px;
+            li{
+              &:first-child{
+                margin-top: 35px;
+              }
+              display: block;
+              margin-bottom: 10px;
+              padding: 10px;
+              border:1px solid @gray-space;
+              list-style: none;
+              text-align: center;
+              img{
+                width: 100px;
+              }
+              .delete{
+                display: none;
+                cursor: pointer;
+                background: @red;
+                color: white;
+                -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
+                border-radius: 50%;
+                width: 24px;
+                height: 25px;
+                font-size: 16px;
+                position: absolute;
+                margin-left: 89px;
+              }
+            }
+        }
+
+        .upload{
+          .radius;
+          font-size: 12px;
+          display:block;
+          text-decoration: none;
+          cursor: pointer;
+          text-align: center;
+          background: @button;
+          color: @buttoncolor;
+          border:1px solid @button;
+          padding: 5px;
+          position: fixed;
+          &:hover{
+            background: @buttonhover;
+          }
+        }
+      }
+    }
+  }
+}
+
+.modal{
+  &:before{
+    content: "";
+    display: none;
+    background: rgba(0,0,0,.6);
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 10;
+  }
+
+  &:target{
+    &:before{
+      display: block;
+    }
+    .modal-dialog{
+      .translate(0, 0);
+      top: 20%;
+    }
+  }
+
+  .btn-close{
+    color: @gray-light;
+    font-size: 20px;
+    text-decoration: none;
+    position: absolute; right: 5px; top: 0;
+
+    &:hover{
+      color: darken(@gray-light, 10%);
+    }
+
+  }
+
+  .modal-dialog{
+    background: #fefefe;
+    border: @gray solid 1px;
+    border-radius: 5px;
+    margin-left: -200px;
+    position: fixed;
+    left: 50%;
+    top: -100%;
+    z-index: 11;
+    width: 360px;
+    .translate(0, -500%);
+    .transition-transform(~"0.3s ease-out");
+  }
+  .modal-body{
+    padding: @space/2;
+    form{
+      label{
+        display: block;
+        font-size: 15px;
+      }
+      input{
+        .radius;
+        width:100%;
+        padding: 5px;
+        border:1px solid @gray-space;
+      }
+      .modal-footer{
+        margin-top:10px;
+        border-top: @gray-lighter solid 1px;
+        text-align: right;
+      }
+      .button{
+        &:disabled{
+          background: @gray-space;
+          border:@gray-space;
+          &:hover{
+            background: @gray-space;
+          }
+        }
+        .radius;
+        padding: 10px;
+        background: @button;
+        border:1px solid @button;
+        color :@buttoncolor;
+        &:hover{
+          background: @buttonhover;
+        }
+      }
+      .preview-picture{
+        width:70px;
+      }
+
+    }
+  }
+
+  .modal-header,
+  .modal-footer{
+    padding: @space/4 @space/2;
+  }
+
+  .modal-header{
+    border-bottom: @gray-lighter solid 1px;
+
+    h2{
+      font-size: 18px;
+    }
+  }
+
+
+}
+
+
+

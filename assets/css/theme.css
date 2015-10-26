@@ -1,0 +1,244 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+* {
+  margin: 0px;
+  padding: 0px;
+}
+.radius {
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+body {
+  font-family: "Open Sans", sans-serif;
+}
+body .row:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+body .row .col {
+  float: left;
+  display: block;
+  height: 100%;
+}
+body .row .col:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+body .row .col:first-child {
+  width: 150px;
+  background: #EEEEEE;
+}
+body .row .col:last-child {
+  width: calc(100% - 150px);
+  background: #999999;
+}
+body .row .col .workarea {
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  width: 90%;
+  height: 90%;
+  margin-left: 5%;
+  margin-top: 2.5%;
+  overflow: hidden;
+  background: #FFFFFF;
+}
+body .row .col .workarea .stickerpiece {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+}
+body .row .col .workarea .startover {
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  background: #66b9ff;
+  padding: 10px;
+  color: #FFFFFF;
+  position: absolute;
+  margin: 5px;
+  border: 1px solid #66b9ff;
+  cursor: pointer;
+}
+body .row .col .workarea .startover:hover {
+  background: #8ad2ff;
+}
+body .row .col .workarea .picture {
+  width: 40%;
+  margin-left: 30%;
+  margin-top: 5%;
+  display: block;
+}
+body .row .col .workarea .uploadArea {
+  background: url("/assets/img/photo_upload.png") no-repeat;
+  height: 128px;
+  width: 128px;
+  margin: 20% auto;
+}
+body .row .col .workarea .uploadArea input {
+  width: 128px;
+  height: 128px;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+body .row .col .stickerarea {
+  padding: 10px;
+  overflow-y: auto;
+  height: 95%;
+}
+body .row .col .stickerarea .sticker-collection {
+  padding: 0px;
+  margin: 0px;
+}
+body .row .col .stickerarea .sticker-collection:hover .delete {
+  display: block;
+}
+body .row .col .stickerarea .sticker-collection li {
+  display: block;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #dedede;
+  list-style: none;
+  text-align: center;
+}
+body .row .col .stickerarea .sticker-collection li:first-child {
+  margin-top: 35px;
+}
+body .row .col .stickerarea .sticker-collection li img {
+  width: 100px;
+}
+body .row .col .stickerarea .sticker-collection li .delete {
+  display: none;
+  cursor: pointer;
+  background: #EC606A;
+  color: white;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  width: 24px;
+  height: 25px;
+  font-size: 16px;
+  position: absolute;
+  margin-left: 89px;
+}
+body .row .col .stickerarea .upload {
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  font-size: 12px;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  background: #66b9ff;
+  color: #FFFFFF;
+  border: 1px solid #66b9ff;
+  padding: 5px;
+  position: fixed;
+}
+body .row .col .stickerarea .upload:hover {
+  background: #8ad2ff;
+}
+.modal:before {
+  content: "";
+  display: none;
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+}
+.modal:target:before {
+  display: block;
+}
+.modal:target .modal-dialog {
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+  top: 20%;
+}
+.modal .btn-close {
+  color: #aaa;
+  font-size: 20px;
+  text-decoration: none;
+  position: absolute;
+  right: 5px;
+  top: 0;
+}
+.modal .btn-close:hover {
+  color: #919191;
+}
+.modal .modal-dialog {
+  background: #fefefe;
+  border: #333 solid 1px;
+  border-radius: 5px;
+  margin-left: -200px;
+  position: fixed;
+  left: 50%;
+  top: -100%;
+  z-index: 11;
+  width: 360px;
+  -webkit-transform: translate(0, -500%);
+  -ms-transform: translate(0, -500%);
+  transform: translate(0, -500%);
+  -webkit-transition: -webkit-transform 0.3s ease-out;
+  -moz-transition: -moz-transform 0.3s ease-out;
+  -o-transition: -o-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+}
+.modal .modal-body {
+  padding: 20px;
+}
+.modal .modal-body form label {
+  display: block;
+  font-size: 15px;
+}
+.modal .modal-body form input {
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #dedede;
+}
+.modal .modal-body form .modal-footer {
+  margin-top: 10px;
+  border-top: #eee solid 1px;
+  text-align: right;
+}
+.modal .modal-body form .button {
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  padding: 10px;
+  background: #66b9ff;
+  border: 1px solid #66b9ff;
+  color: #FFFFFF;
+}
+.modal .modal-body form .button:disabled {
+  background: #dedede;
+  border: #dedede;
+}
+.modal .modal-body form .button:disabled:hover {
+  background: #dedede;
+}
+.modal .modal-body form .button:hover {
+  background: #8ad2ff;
+}
+.modal .modal-body form .preview-picture {
+  width: 70px;
+}
+.modal .modal-header,
+.modal .modal-footer {
+  padding: 10px 20px;
+}
+.modal .modal-header {
+  border-bottom: #eee solid 1px;
+}
+.modal .modal-header h2 {
+  font-size: 18px;
+}

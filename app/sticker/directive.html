@@ -1,0 +1,41 @@
+<div>
+
+    <div class="stickerarea">
+        <a href="#newsticker" class="upload">Upload new sticker</a>
+
+        <ul class="sticker-collection">
+            <li ng-repeat="s in sticker.collection">
+                <a class="delete" ng-click="sticker.delete(s)">x</a>
+                <img ng-src="{{s.file}}" draggable="true" dragfile>
+                {{s.name}}
+            </li>
+
+        </ul>
+    </div>
+
+
+    <div class="modal" id="newsticker" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h2>Upload new sticker</h2>
+                <a href="#" id="close-modal" class="btn-close" aria-hidden="true">×</a>
+            </div>
+            <div class="modal-body">
+                <form name="uploadSticker" ng-submit="sticker.new(uploadSticker.$valid)" novalidate>
+                    <label>File</label>
+                    <input type="file" ng-model="sticker.item.file" fileread="sticker.item.file" accept="image/*" required/>
+
+                    <label>Name</label>
+                    <input type="text" ng-model="sticker.item.name" required/>
+
+                    <img  ng-if="sticker.item.file" ng-src="{{sticker.item.file}}" class="preview-picture">
+
+                    <div class="modal-footer">
+                      <button class="button" ng-disabled="!uploadSticker.$valid">Add to collection</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -2,25 +2,27 @@
 <html ng-app="photoSticker">
 <head>
     <title>Photo Sticker - AngularJS 1.4</title>
-    <link rel="stylesheet" href="assets/theme.css" type="text/css"/>
+    <link rel="stylesheet" href="/assets/css/theme.css" type="text/css"/>
     <meta charset="utf-8">
 </head>
 <body>
 <div id="photosticker" class="row">
     <div class="col">
-
+        <stickerarea></stickerarea>
     </div>
     <div class="col">
-        <div class="workarea">
-            <photo></photo>
-        </div>
+        <photoarea></photoarea>
     </div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
-<script src="app/app.js"></script>
-<script src="app/photo/directive.js"></script>
-<script src="app/photo/fileread-directive.js"></script>
+<script src="/app/app.js"></script>
+<script src="/app/file/fileread-directive.js"></script>
+<script src="/app/file/drop-directive.js"></script>
+<script src="/app/file/drag-directive.js"></script>
+
+<script src="/app/photo/directive.js"></script>
+<script src="/app/sticker/directive.js"></script>
 
 </body>
 
